@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- 设置字符编码 -->
+    <meta charset="UTF-8">
+    <!-- 适应移动设备屏幕 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页标题，会显示在浏览器标签和微信分享卡片标题处 -->
+    <title>快来点我呀！</title>
+    <!-- 配置 Open Graph 协议，优化微信分享展示 -->
+    <meta property="og:title" content="E:\Fly\Demo\1.png">
+    <meta property="og:description" content="E:\Fly\Demo\2.png">
+    <!-- 请替换为实际的分享缩略图链接 -->
+    <meta property="og:image" content="E:\Fly\Demo\1.png">
+    <!-- 请替换为实际的网页链接 -->
+    <meta property="og:url" content="E:\Fly\Demo\2.png">
+    <meta property="og:type" content="website">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        #clickableImage {
+            cursor: pointer;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #clickableImage:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #qrcodeImage {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 可点击的图片 -->
+    <img id="clickableImage" src="E:\Fly\Demo\1.png" alt="点击我">
+    <!-- 模态框 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>这是二维码</p>
+            <!-- 二维码图片 -->
+            <img id="qrcodeImage" src="E:\Fly\Demo\2.jpg" alt="二维码">
+        </div>
+    </div>
+    <script>
+        // 获取可点击图片元素
+        const clickableImage = document.getElementById('clickableImage');
+        // 获取模态框元素
+        const modal = document.getElementById('myModal');
+        // 获取关闭按钮元素
+        const closeButton = document.querySelector('.close');
+
+        // 为可点击图片添加点击事件监听器，点击时显示模态框
+        clickableImage.addEventListener('click', function () {
+            modal.style.display = 'block';
+        });
+
+        // 为关闭按钮添加点击事件监听器，点击时隐藏模态框
+        closeButton.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
+        // 为窗口添加点击事件监听器，点击模态框外部时隐藏模态框
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
